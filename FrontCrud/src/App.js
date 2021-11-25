@@ -12,11 +12,11 @@ const HOST_API = "http://localhost:8080/api";
 const initialState = {
   list: [],
   item: {}
-
 };
 
 const Store = createContext(initialState);
 
+/* Función que inicia el formulario y realiza la petición a la API */
 const Form = () => {
   const formRef = useRef(null);
   const { dispatch, state: { item } } = useContext(Store);
@@ -60,6 +60,7 @@ const Form = () => {
   );
 };
 
+/* Se usa el conexto de la respuesta y se retorna la tabla con los datos */
 const List = () => {
   const { dispatch, state } = useContext(Store);
 
@@ -99,7 +100,7 @@ const List = () => {
   );
 };
 
-
+/* Se actualiza el estado de la lista */
 function reducer(state, action) {
   switch (action.type) {
     case 'update-list':
@@ -121,6 +122,7 @@ const StoreProvider = ({ children }) => {
   );
 };
 
+/* Función principal */
 function App() {
   return (
     <StoreProvider>
@@ -130,4 +132,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; //se exporta el componente App
